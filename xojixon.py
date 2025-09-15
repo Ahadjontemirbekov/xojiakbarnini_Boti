@@ -1,16 +1,27 @@
 import sqlite3
-from telegram import Update, KeyboardButton, ReplyKeyboardMarkup, ReplyKeyboardRemove, BotCommand
+from telegram import (
+    Update,
+    KeyboardButton,
+    ReplyKeyboardMarkup,
+    ReplyKeyboardRemove,
+    BotCommand,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup
+)
 from telegram.ext import (
     Updater,
     CommandHandler,
     MessageHandler,
     Filters,
     CallbackContext,
-    ConversationHandler
+    ConversationHandler,
+    CallbackQueryHandler
 )
 
-# 🔐 Admin Telegram ID
+# 🔐 Admin Telegram ID   6372135407
 ADMIN_ID = 6372135407  # <-- Faqat raqamlar, string emas
+# 🔗 Kanal username
+CHANNEL_USERNAME = "@mashinabozoruzb_n1"
 
 # Kino qo'shish va o'chirish bosqichlari
 KINO_ID, VIDEO, NOMI = range(3)
@@ -39,6 +50,21 @@ def baza_yarat():
 # /start buyrug'i
 def start(update: Update, context: CallbackContext):
     user_id = update.effective_user.id
+
+    # --- Majburiy obuna tekshiruvi ---
+    chat_member = context.bot.get_chat_member(CHANNEL_USERNAME, user_id)
+    if chat_member.status not in ["member", "administrator", "creator"]:
+        keyboard = [
+            [InlineKeyboardButton("📢 Kanalga obuna bo‘lish", url=f"https://t.me/{CHANNEL_USERNAME.strip('@')}")],
+        ]
+        reply_markup = InlineKeyboardMarkup(keyboard)
+        update.message.reply_text(
+            "❗️ Botdan foydalanish uchun avval kanalimizga obuna bo‘ling:",
+            reply_markup=reply_markup
+        )
+        return
+
+    # --- Obuna bo'lgan bo'lsa davom etadi ---
     if user_id == ADMIN_ID:
         update.message.reply_text("🎥 Xush kelibsiz, admin!", reply_markup=admin_menu)
     else:
@@ -138,7 +164,7 @@ def menyuni_yopish(update: Update, context: CallbackContext):
 # Botni ishga tushirish
 def main():
     baza_yarat()
-    updater = Updater("8097741928:AAEMl-b7QOAbxBctkGo5CU7ioZNwKf75bnA", use_context=True)
+    updater = Updater("7827433962:AAGkvZ4AyxHhQqfMnK6XCcJLfnbw1FOd3Nc", use_context=True)
     dp = updater.dispatcher
 
     dp.add_handler(CommandHandler("start", start))
