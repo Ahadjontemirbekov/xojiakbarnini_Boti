@@ -164,7 +164,7 @@ def menyuni_yopish(update: Update, context: CallbackContext):
 # Botni ishga tushirish
 def main():
     baza_yarat()
-    updater = Updater("7827433962:AAGkvZ4AyxHhQqfMnK6XCcJLfnbw1FOd3Nc", use_context=True)
+    updater = Updater("8097741928:AAEMl-b7QOAbxBctkGo5CU7ioZNwKf75bnA", use_context=True)
     dp = updater.dispatcher
 
     dp.add_handler(CommandHandler("start", start))
