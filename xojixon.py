@@ -21,7 +21,7 @@ from telegram.ext import (
 # 🔐 Admin Telegram ID   6372135407
 ADMIN_ID = 6372135407  # <-- Faqat raqamlar, string emas
 # 🔗 Kanal username
-CHANNEL_USERNAME = "@mashinabozoruzb_n1"
+CHANNEL_USERNAME = "@kino_xoji"
 
 # Kino qo'shish va o'chirish bosqichlari
 KINO_ID, VIDEO, NOMI = range(3)
