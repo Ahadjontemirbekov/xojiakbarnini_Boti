@@ -10,7 +10,7 @@ from telegram.ext import (
 )
 
 # 🔐 Admin Telegram ID
-ADMIN_ID = 6642743434  # <-- Faqat raqamlar, string emas
+ADMIN_ID = 6372135407  # <-- Faqat raqamlar, string emas
 
 # Kino qo'shish va o'chirish bosqichlari
 KINO_ID, VIDEO, NOMI = range(3)
@@ -175,5 +175,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
