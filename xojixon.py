@@ -301,9 +301,14 @@ def main():
     dp.add_handler(MessageHandler(Filters.regex('^📊 Statistika$'), statistika))
     dp.add_handler(MessageHandler(Filters.regex('^🎬 Kinolar$') | Filters.text & ~Filters.command, kino_korish))
 
+    updater.bot.set_my_commands([
+        BotCommand("start", "Botni boshlash"),
+    ])
+    
     updater.start_polling()
     updater.idle()
 
 
 if __name__ == '__main__':
     main()
+
