@@ -17,7 +17,7 @@ ADMIN_ID = 6659797188  # Faqat birinchi raqam qoldirildi
 
 # 📢 Majburiy obuna kanallari
 REQUIRED_CHANNELS = [
-    {"name": "1 - Kanal", "username": "@klint1221", "url": "https://t.me/klint1221"}
+    {"name": "1 - Kanal", "username": "@kino_flash1", "url": "https://t.me/kino_flash1"}
 ]
 
 # Kino qo'shish va o'chirish bosqichlari
@@ -132,6 +132,7 @@ def foydalanuvchi_qosh(user_id: int, username: str, first_name: str, last_name: 
     finally:
         con.close()
 
+
 # Barcha foydalanuvchilarni olish
 def barcha_foydalanuvchilarni_ol():
     con = sqlite3.connect('kino_bot.db')
@@ -236,6 +237,7 @@ def reklama_yuborish(update: Update, context: CallbackContext):
             print(f"Xato: {e} - User ID: {user_id}")
             failed += 1
 
+
     update.message.reply_text(
         f"✅ Reklama yuborish yakunlandi!\n\n"
         f"📊 Natijalar:\n"
@@ -265,7 +267,7 @@ def reklama_berish(update: Update, context: CallbackContext):
 
     update.message.reply_text(
         f"📢 Reklama joylashtirish uchun admin bilan bog'laning:\n\n"
-        f"👤 Admin: @@xoji_4\n"
+        f"👤 Admin: @xoji_4\n"
         f"📞 Telegram: https://t.me/@xoji_4\n\n"
         f"💬 Taklif va reklamalar uchun xabaringizni qoldiring.",
         reply_markup=user_menu
@@ -519,4 +521,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
